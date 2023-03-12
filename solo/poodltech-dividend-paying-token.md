@@ -211,7 +211,26 @@ https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9
 #### Description:
 When using a router to swap tokens, slippage tolerance provides a protection mechanism in case of flash moves in the market values. It is user’s responsibility to give a minimum amount of tokens he is ready to accept. In this protocol, the minAmount has been hardcoded as 1 which means 99 % + slippage allowed in case of large amounts. This will make user lose most of his dividend funds when the pool is imbalanced. 
 
+```
+function swapTokensForEth(uint256 tokenAmount) private {  
+        // generate the uniswap pair path of token -> weth
+        address[] memory path = new address[](2);
+        path[0] = address(this);
+        path[1] = uniswapV2Router.WETH();
 
+        _approve(address(this), address(uniswapV2Router), tokenAmount);
+
+        // make the swap
+        uniswapV2Router.swapExactTokensForETHSupportingFeeOnTransferTokens(
+            tokenAmount,
+            1, // accept any amount of ETH
+            path,
+            address(this),
+            block.timestamp
+        );      
+    }
+
+```
 
 
 #### Recommendation:
@@ -239,7 +258,20 @@ https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9
 The newToken address variable has not been initialized thus it has the default zero value. In the airdrop() and emergencyWithdraw() functions, calling IERC20(newToken).transfer/safetransfer will always revert because transfer functions do not exist at the zero address. So the contract becomes unusable  
 
 
+```
 
+function airdrop(address[] calldata holders, uint[] calldata amounts) external onlyOwner {
+        require(holders.length == amounts.length, "");
+        for(uint256 i = 0; i < holders.length; i++) {
+            if (!isAirdropped[holders[i]]){
+                require(IERC20(newToken).balanceOf(address(this)) >= amounts[i],"not enough tokens, refill the contract.");
+                IERC20(newToken).safeTransfer(payable(holders[i]), amounts[i]);
+                isAirdropped[holders[i]] = true;
+            }
+        }
+   }
+   
+```
 
 
 #### Recommendation:
@@ -260,14 +292,24 @@ Make sure to set the newToken address in the constructor before deploying the co
 
 
  https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9f2c84/contracts/Token.sol#L81
-
-
-
-
+ 
+ 
 #### Description:
 While enquiring about the chain the token.sol contracts will be deployed, I got to know it is Polygon. The contract address passed as the Uniswap router is 0x10ED43C718714eb63d5aA57B78B54704E256024E, which is actually an EOA on the polygon chain. This address is a Router by PancakeSwap on Binance Smart Chain, but calls to this address on Polygon would revert and make our contract unusable.
 
+```
 
+constructor()  ERC20("TBD", "TBD") {
+
+    	dividendTracker = new DividendTracker();
+    	IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+         // Create a uniswap pair for this new token
+        address _uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
+            .createPair(address(this), _uniswapV2Router.WETH());
+        uniswapV2Router = _uniswapV2Router;
+        automatedMarketMakerPairs[_uniswapV2Pair]=true;
+        
+```
 
 
 
@@ -298,7 +340,23 @@ https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9
 When updating the DividendTracker contract address to be interacted with from our token contract, the update function calls excludeFromDividends function to exclude certain addresses from dividends in the new DividendTracker’s storage. While doing this, the uniswapV2Pair address has been left out while as per the L#94 it is meant to be excluded. This breaks the assumption of the pair being excluded from dividends and the dividend amount sent to the pair contract may be stuck.
 
 
+```
 
+function updateDividendTracker(address newAddress) public onlyOwner {
+        require(newAddress != address(dividendTracker), "");
+        DividendTracker newDividendTracker = DividendTracker(payable(newAddress));
+        require(newDividendTracker.owner() == address(this), "");
+        newDividendTracker.excludeFromDividends(address(newDividendTracker));
+        newDividendTracker.excludeFromDividends(address(this));
+        newDividendTracker.excludeFromDividends(owner());
+        newDividendTracker.excludeFromDividends(deadWallet);
+        newDividendTracker.excludeFromDividends(address(uniswapV2Router));
+
+        emit UpdateDividendTracker(newAddress, address(dividendTracker));
+        dividendTracker = newDividendTracker;
+    }
+    
+```
 
 
 #### Recommendation:
@@ -327,7 +385,24 @@ https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9
 When updating the UniswapV2Router contract address to be interacted with from our token contract, the update function needs to change the value of the state variable “_uniswapV2Pair” because the new router will have a different address for the token pair. It leaves out this state update again preventing the uniswapV2Pair to be excluded from Dividends. Also, the new uniswapV2Router address needs to be excluded from Dividends. 
 
 
+```
 
+ function updateUniswapV2Router(address newAddress) public onlyOwner {
+        require(newAddress != address(uniswapV2Router), "");
+        uniswapV2Router = IUniswapV2Router02(newAddress);
+        address pair = IUniswapV2Factory(uniswapV2Router.factory())
+            .getPair(address(this), uniswapV2Router.WETH());
+        if(pair == address(0)){
+            address newPair = IUniswapV2Factory(uniswapV2Router.factory())
+                .createPair(address(this), uniswapV2Router.WETH());
+            automatedMarketMakerPairs[newPair]=true;         
+        }else{
+            automatedMarketMakerPairs[pair]=true;
+        }
+        emit UpdateUniswapV2Router(newAddress, address(uniswapV2Router));
+    }
+
+```
 
 
 #### Recommendation:
@@ -362,6 +437,14 @@ According to the docs, the max fees charged can’t be more than 15 %, but this 
 The user thinks that max fees is 15 % but in reality he is being charged upto 30 %
 
 
+```
+
+function setSellTopUp(uint256 value) external onlyOwner{
+        require((value.add(liquidityFee).add(rewardsFee).add(marketingFee) <= capFees),"");
+        sellTopUp = value;
+    }
+
+```
 
 
 
@@ -392,8 +475,16 @@ https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9
 The DividendTracker contract has a check that allows the user to withdraw dividends only if a certain time threshold, claimWait has passed from the last time he claimed. This check can be bypassed by calling the processAccount() and claim() functions in Token contract. At these two places, the claimWait is not checked.
 
 
+```
 
+function canAutoClaim(uint256 lastClaimTime) private view returns (bool) {
+    	if(lastClaimTime > block.timestamp)  {
+    		return false;
+    	}
+    	return block.timestamp.sub(lastClaimTime) >= claimWait;
+    }
 
+```
 
 
 #### Recommendation:
@@ -423,7 +514,15 @@ https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9
 The excludeFromDividends() function in DividendTRacker Contract removes the address from token Holders list, while the user is not included back when includedInDividends() is called. 
 
 
+```
 
+function includeInDividends(address account) external onlyOwner {
+    	require(excludedFromDividends[account]);
+    	excludedFromDividends[account] = false;
+    	emit IncludeInDividends(account);
+    }
+
+```
 
 
 
@@ -452,7 +551,22 @@ https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9
 The buyPresale function makes use of msg.value when it doesnt have a payable state mutability. This function gets called in two ways, one internally when anyone sends eth to the contract, or by a user directly interacting with this function. Either ways, it will revert or will not work because we are wanting to send value to a non-payable function. 
 
 
+```
 
+function buyPresale(uint256 value) public {
+        require(value == msg.value, "");
+        require(boughtAmount[msg.sender].add(value) <= cap, "");
+        
+```
+
+```
+
+ receive() external payable {
+        require(airDropActive,"presale closed");
+        buyPresale(msg.value);
+    }
+    
+```    
 
 
 #### Recommendation:
@@ -481,8 +595,31 @@ https://github.com/poodlTech/tokenAudit/blob/eebe267b3fdd75a82e09cc270b3c046b2c9
 The newGasLeft variable is assigned the current execution gas remaining value using gasleft() at Line 591. The loop-controlling gasLeft variable has been assigned this same value at Line 595 but the gas used in operations from line 592 to 594 have not been recorded. Thus the newGasLeft variable has already got an outdated value. This leads to wrong gas calculation. 
 
 
+```
 
+while(gasUsed < gas && iterations < numberOfTokenHolders) {
+    		_lastProcessedIndex++;
+    		if(_lastProcessedIndex >= tokenHoldersMap.keys.length) {
+    			_lastProcessedIndex = 0;
+    		}
+    		address account = tokenHoldersMap.keys[_lastProcessedIndex];
+    		if(canAutoClaim(lastClaimTimes[account])) {
+    			if(processAccount(payable(account), true)) {
+    				claims++;
+    			}
+    		}
+    		iterations++;
+    		uint256 newGasLeft = gasleft();
+    		if(gasLeft > newGasLeft) {
+    			gasUsed = gasUsed.add(gasLeft.sub(newGasLeft));
+    		}
+    		gasLeft = newGasLeft;
+    	}
+    	lastProcessedIndex = _lastProcessedIndex;
+    	return (iterations, claims, lastProcessedIndex);
+    }
 
+```
 
 
 #### Recommendation:
