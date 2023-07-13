@@ -13,6 +13,7 @@ This repository represents my portfolio of public smart contract security audits
 3. Surge protocol : 1 High finding : https://github.com/sherlock-audit/2023-02-surge-judging/issues/229
 4. Taurus : 1 Medium finding : https://github.com/sherlock-audit/2023-03-taurus-judging/issues/194
 5. GMX Update : 1 High and 1 solo Medium finding : https://github.com/sherlock-audit/2023-04-gmx-judging/issues/205 , https://github.com/sherlock-audit/2023-04-gmx-judging/issues/229
+6. Ajna Update : 1 High and 2 solo Medium findings : https://github.com/sherlock-audit/2023-04-ajna-judging/issues/111 , https://github.com/sherlock-audit/2023-04-ajna-judging/issues/108 , https://github.com/sherlock-audit/2023-04-ajna-judging/issues/113
 
 ## Contacts
 
