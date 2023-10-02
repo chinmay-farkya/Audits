@@ -14,8 +14,8 @@ This repository represents my portfolio of public smart contract security audits
 4. Taurus : 1 Medium finding : https://github.com/sherlock-audit/2023-03-taurus-judging/issues/194
 5. GMX Update : 5th Place with 1 High and 1 solo Medium finding : https://github.com/sherlock-audit/2023-04-gmx-judging/issues/205 , https://github.com/sherlock-audit/2023-04-gmx-judging/issues/229
 6. Ajna Update : 2nd Place with 1 High and 2 solo Medium findings : https://github.com/sherlock-audit/2023-04-ajna-judging/issues/111 , https://github.com/sherlock-audit/2023-04-ajna-judging/issues/108 , https://github.com/sherlock-audit/2023-04-ajna-judging/issues/113
-7. Sparkn on Codehawks - 2 Low findings
-8. Cooler update on sherlock - 2 Medium findings
+7. Sparkn on Codehawks - 2 Low findings [SparkN Report](https://www.codehawks.com/report/cllcnja1h0001lc08z7w0orxx)
+8. Cooler update on sherlock - 2 Medium findings [Cooler](https://audits.sherlock.xyz/contests/107/report)
 
 ## Contacts
 
