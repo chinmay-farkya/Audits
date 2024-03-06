@@ -17,6 +17,9 @@ This repository represents my portfolio of public smart contract security audits
 6. Ajna Update : 2nd Place with 1 High and 2 solo Medium findings : https://github.com/sherlock-audit/2023-04-ajna-judging/issues/111 , https://github.com/sherlock-audit/2023-04-ajna-judging/issues/108 , https://github.com/sherlock-audit/2023-04-ajna-judging/issues/113
 7. Sparkn on Codehawks - 2 Low findings [SparkN Report](https://www.codehawks.com/report/cllcnja1h0001lc08z7w0orxx)
 8. Cooler update on sherlock - 2 Medium findings [Cooler](https://audits.sherlock.xyz/contests/107/report)
+9. Apebond on secure3 - 3 Low findings [Apebond report](https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/Apebond/Apebond_final_Secure3_Audit_Report.pdf)
+10. Ethereum Credit Guild on code4rena - 3 High and 2 Medium findings https://code4rena.com/reports/2023-12-ethereumcreditguild
+11. 100x on sherlock - Rank #3 - https://audits.sherlock.xyz/contests/153/leaderboard
 
 ## Contacts
 
