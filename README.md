@@ -2,7 +2,7 @@
 
 This repository represents my portfolio of public smart contract security audits and audit contest findings.
 
-## Solo Audits
+## Private Audits
 
 1. [Raisin Labs P2P Fundraising Protocol](https://github.com/chinmay-farkya/Audits/blob/main/solo/Raisin-p2p-fundraising.pdf)
 2. [Poodl Dividend Paying Token](https://github.com/chinmay-farkya/Audits/blob/main/solo/poodltech-dividend-paying-token.md)
