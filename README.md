@@ -20,6 +20,7 @@ This repository represents my portfolio of public smart contract security audits
 9. Apebond on secure3 - 3 Low findings [Apebond report](https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/Apebond/Apebond_final_Secure3_Audit_Report.pdf)
 10. Ethereum Credit Guild on code4rena - 3 High and 2 Medium findings https://code4rena.com/reports/2023-12-ethereumcreditguild
 11. 100x on sherlock - Rank #3 - https://audits.sherlock.xyz/contests/153/leaderboard
+12. Zerolend on Cantina - 6 M and 2 H findings  - https://cantina.xyz/leaderboard/a83eaf73-9cbc-495f-8607-e55d4fdaf407
 
 ## Contacts
 
