@@ -4,10 +4,11 @@ This repository represents my portfolio of public smart contract security audits
 
 ## Private Audits
 
-1. [Raisin Labs P2P Fundraising Protocol](https://github.com/chinmay-farkya/Audits/blob/main/solo/Raisin-p2p-fundraising.pdf)
-2. [Poodl Dividend Paying Token](https://github.com/chinmay-farkya/Audits/blob/main/solo/poodltech-dividend-paying-token.md)
-3. [ProphetRouter](https://github.com/chinmay-farkya/Audits/blob/main/solo/ProphetRouter.md)
-4. [ProphetStaking](https://github.com/chinmay-farkya/Audits/blob/main/solo/prophetstaking.md)
+1. [Juicebox V4](https://github.com/chinmay-farkya/Audits/blob/main/solo/juicebox-eth-audit-report-v4.pdf)
+2. [Raisin Labs P2P Fundraising Protocol](https://github.com/chinmay-farkya/Audits/blob/main/solo/Raisin-p2p-fundraising.pdf)
+3. [Poodl Dividend Paying Token](https://github.com/chinmay-farkya/Audits/blob/main/solo/poodltech-dividend-paying-token.md)
+4. [ProphetRouter](https://github.com/chinmay-farkya/Audits/blob/main/solo/ProphetRouter.md)
+5. [ProphetStaking](https://github.com/chinmay-farkya/Audits/blob/main/solo/prophetstaking.md)
 
 ## Audit Contests
 1. Ajna Finance contest : 1 Medium Finding : https://github.com/sherlock-audit/2023-01-ajna-judging/issues/163
