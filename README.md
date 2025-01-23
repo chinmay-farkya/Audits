@@ -10,19 +10,18 @@ This repository represents my portfolio of public smart contract security audits
 4. [ProphetRouter](https://github.com/chinmay-farkya/Audits/blob/main/solo/ProphetRouter.md)
 5. [ProphetStaking](https://github.com/chinmay-farkya/Audits/blob/main/solo/prophetstaking.md)
 
-## Audit Contests
-1. Ajna Finance contest : 1 Medium Finding : https://github.com/sherlock-audit/2023-01-ajna-judging/issues/163
-2. Blueberry : 1 Medium finding : https://github.com/sherlock-audit/2023-02-blueberry-judging/issues/253
-3. Surge protocol : 1 High finding : https://github.com/sherlock-audit/2023-02-surge-judging/issues/229
-4. Taurus : 1 Medium finding : https://github.com/sherlock-audit/2023-03-taurus-judging/issues/194
-5. GMX Update : 5th Place with 1 High and 1 solo Medium finding : https://github.com/sherlock-audit/2023-04-gmx-judging/issues/205 , https://github.com/sherlock-audit/2023-04-gmx-judging/issues/229
-6. Ajna Update : 2nd Place with 1 High and 2 solo Medium findings : https://github.com/sherlock-audit/2023-04-ajna-judging/issues/111 , https://github.com/sherlock-audit/2023-04-ajna-judging/issues/108 , https://github.com/sherlock-audit/2023-04-ajna-judging/issues/113
-7. Sparkn on Codehawks - 2 Low findings [SparkN Report](https://www.codehawks.com/report/cllcnja1h0001lc08z7w0orxx)
-8. Cooler update on sherlock - 2 Medium findings [Cooler](https://audits.sherlock.xyz/contests/107/report)
-9. Apebond on secure3 - 3 Low findings [Apebond report](https://github.com/Secure3Audit/Secure3Academy/blob/main/audit_reports/Apebond/Apebond_final_Secure3_Audit_Report.pdf)
-10. Ethereum Credit Guild on code4rena - 3 High and 2 Medium findings https://code4rena.com/reports/2023-12-ethereumcreditguild
-11. 100x on sherlock - Rank #3 - https://audits.sherlock.xyz/contests/153/leaderboard
-12. Zerolend on Cantina - 6 M and 2 H findings  - https://cantina.xyz/leaderboard/a83eaf73-9cbc-495f-8607-e55d4fdaf407
+
+## 🏅 Achievements in Audit Contests
+Here is my overall contest profile : https://audits.sherlock.xyz/watson/ChinmayF
+
+Major Highlights :
+
+1. Placed 2nd in Ajna Finance on sherlock - https://audits.sherlock.xyz/contests/75/leaderboard
+2. Placed 3rd in 100x finance on sherlock - https://audits.sherlock.xyz/contests/153/leaderboard
+3. Placed 5th in GMX update on sherlock - https://audits.sherlock.xyz/contests/74/leaderboard
+4. Placed 5th in MagicSea Staking on sherlock - https://audits.sherlock.xyz/contests/437/leaderboard
+5. Found 3 Highs out of 4 and 2 Medium findings in Ethereum Credit Guild contest on C4 : https://code4rena.com/@Chinmay
+6. Found 2 Highs and 5 Medium findings in zerolend contest on Cantina : https://cantina.xyz/leaderboard/a83eaf73-9cbc-495f-8607-e55d4fdaf407
 
 ## Contacts
 
