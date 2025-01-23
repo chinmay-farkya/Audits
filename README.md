@@ -1,5 +1,4 @@
-# Chinmay's smart contract security reviews - audit reports and findings
-
+# Chinmay's Audit portfolio
 This repository represents my portfolio of public smart contract security audits and audit contest findings.
 
 ## Private Audits
@@ -16,12 +15,20 @@ Here is my overall contest profile : https://audits.sherlock.xyz/watson/ChinmayF
 
 Major Highlights :
 
-1. Placed 2nd in Ajna Finance on sherlock - https://audits.sherlock.xyz/contests/75/leaderboard
-2. Placed 3rd in 100x finance on sherlock - https://audits.sherlock.xyz/contests/153/leaderboard
-3. Placed 5th in GMX update on sherlock - https://audits.sherlock.xyz/contests/74/leaderboard
-4. Placed 5th in MagicSea Staking on sherlock - https://audits.sherlock.xyz/contests/437/leaderboard
-5. Found 3 Highs out of 4 and 2 Medium findings in Ethereum Credit Guild contest on C4 : https://code4rena.com/@Chinmay
-6. Found 2 Highs and 5 Medium findings in zerolend contest on Cantina : https://cantina.xyz/leaderboard/a83eaf73-9cbc-495f-8607-e55d4fdaf407
+
+
+| Duration             | Contest                                                                       | Description                                                                                 | Ranking |
+|:---------------------|:------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------|:-------:|
+| 1 July - 11 July 2024 | [MagicSea Staking](https://audits.sherlock.xyz/contests/437/leaderboard)     | veTokenomics system (including voting, bribing and staking rewards                                                |   5th   |
+| 2 Feb - 13 Feb 2024 | [100x exchange](https://audits.sherlock.xyz/contests/153/leaderboard)           | Orderbook-based Perpetual Dex on Blast L2                 |    3rd    |
+| 09 Jan - 26 Jan 2024  | [Zerolend](https://cantina.xyz/competitions/a83eaf73-9cbc-495f-8607-e55d4fdaf407/leaderboard)           | Governance contracts of zerolend - A lending protocol on zksync                        |    9th    |
+| 5 Jun - 22 Jun 2023 | [Ajna finance](https://audits.sherlock.xyz/contests/75/leaderboard)                                 | P2P Oracle-less lending protocol                                      |   2nd   |
+| 25 Apr - 04 Jun 2023 | [GMX V2](https://audits.sherlock.xyz/contests/74/leaderboard)                                     | Decentralized spot and perpetual exchange                                           |   5th   |
+| 12 Dec - 29 Dec 2023  | [Ethereum Credit Guild](https://code4rena.com/audits/2023-12-ethereum-credit-guild)                                       | Pooled lending protocol                      |    found 5 HMs    |
+
+
+
+
 
 ## Contacts
 
