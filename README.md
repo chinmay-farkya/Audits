@@ -1,5 +1,5 @@
 # Chinmay's Audit portfolio
-This repository represents my portfolio of public smart contract security audits and audit contest findings.
+This page contains my portfolio of security audits and competitive audits' results.
 
 ## Private Audits
 
@@ -27,7 +27,8 @@ Major Highlights :
 | 12 Dec - 29 Dec 2023  | [Ethereum Credit Guild](https://code4rena.com/audits/2023-12-ethereum-credit-guild)                                       | Pooled lending protocol                      |    found 5 HMs    |
 
 
-
+## Spearbit 
+Reports of all security reviews I did at Spearbit can be found on [my cantina profile](https://cantina.xyz/u/chinmay)
 
 
 ## Contacts
