@@ -1,5 +1,5 @@
 # Chinmay's Audit portfolio
-This page contains my portfolio of security audits and competitive audits' results.
+This page contains my portfolio of security audits and competitive audit results.
 
 ## Private Audits
 
